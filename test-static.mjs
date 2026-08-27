@@ -27,6 +27,8 @@ assert.match(html, /story-qr/);
 assert.match(html, /create-qr-code/);
 assert.match(html, /height:100dvh/);
 assert.match(html, /overflow:hidden/);
+assert.match(html, /overflow-y:auto/);
+assert.doesNotMatch(html, /\.story h2\{[^}]*line-clamp/);
 assert.match(html, /\.vertical main\{grid-template-columns:1fr/);
 assert.match(html, /grid-template-columns:minmax\(0,1\.56fr\) minmax\(360px,\.94fr\)/);
 assert.match(html, /\.vertical \.side\{grid-template-columns:1fr 1fr/);
