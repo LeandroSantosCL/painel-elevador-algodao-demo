@@ -30,7 +30,10 @@ assert.match(html, /overflow:hidden/);
 assert.match(html, /\.vertical main\{grid-template-columns:1fr/);
 assert.match(html, /grid-template-columns:minmax\(0,1\.56fr\) minmax\(360px,\.94fr\)/);
 assert.match(html, /\.vertical \.side\{grid-template-columns:1fr 1fr/);
-assert.match(html, /96\*1000|96000/);
-assert.match(html, /120s/);
+assert.match(html, /NEWS_ROTATION_MS=96000/);
+assert.match(html, /scheduleNewsRotation\(\)/);
+assert.doesNotMatch(html, /setInterval\(\(\)=>\{if\(state\.playing/);
+assert.match(html, /summary-distance/);
+assert.match(html, /summaryScroll 120s/);
 
 console.log('OK: testes estáticos CNN, QR, compactação e regras de tempo passaram.');
