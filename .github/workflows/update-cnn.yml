@@ -19,6 +19,8 @@ jobs:
           node-version: '20'
           
       - name: Run update script
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: node update-cnn.js
         
       - name: Commit and push if changed

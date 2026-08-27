@@ -17,11 +17,19 @@ assert.equal((iframe.match(/cnn-frame/g) || []).length, 1);
 
 assert.match(html, /class="cnn-frame"/);
 assert.match(html, /title="CNN Brasil ao vivo"/);
+assert.match(html, /id="ibov"/);
+assert.match(html, /id="weather"/);
+assert.match(html, /id="clock"/);
+assert.match(html, /id="destinations"/);
+assert.match(html, /id="ptax-track"/);
+assert.match(html, /id="ptax-alerts"/);
 assert.match(html, /story-qr/);
 assert.match(html, /create-qr-code/);
 assert.match(html, /height:100dvh/);
 assert.match(html, /overflow:hidden/);
-assert.match(html, /\.vertical main/);
+assert.match(html, /\.vertical main\{grid-template-columns:1fr/);
+assert.match(html, /grid-template-columns:minmax\(0,1\.56fr\) minmax\(360px,\.94fr\)/);
+assert.match(html, /\.vertical \.side\{grid-template-columns:1fr 1fr/);
 assert.match(html, /96\*1000|96000/);
 assert.match(html, /120s/);
 
