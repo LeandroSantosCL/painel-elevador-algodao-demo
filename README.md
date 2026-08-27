@@ -21,3 +21,7 @@ Execute `node test-static.mjs` na raiz deste repositório para verificar a migra
 ## Ciclos automáticos do painel
 
 A notícia em destaque alterna automaticamente a cada 96 segundos por um agendamento reiniciável; o resumo usa rolagem suave de 120 segundos e reinicia quando outra notícia é selecionada. O clima de Santos e o relógio digital BRT são atualizados no carregamento e o relógio avança a cada segundo. Caso o navegador bloqueie uma fonte pública, os módulos exibem estado de indisponibilidade em vez de deixar a tela vazia.
+
+## Atualização horária em segundo plano
+
+A versão estática agenda uma nova consulta a cada hora (`60 minutos`) usando um temporizador encadeado no navegador. A rotina atualiza notícias, clima e demais fontes diretamente no DOM, preservando a página aberta, o relógio, a notícia selecionada e os controles de reprodução. O rodapé informa o resultado e o horário da última sincronização. O botão de atualização manual usa a mesma rotina e impede consultas sobrepostas.
