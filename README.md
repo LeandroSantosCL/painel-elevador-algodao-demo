@@ -25,3 +25,7 @@ A notícia em destaque alterna automaticamente a cada 96 segundos por um agendam
 ## Atualização horária em segundo plano
 
 A versão estática agenda uma nova consulta a cada hora (`60 minutos`) usando um temporizador encadeado no navegador. A rotina atualiza notícias, clima e demais fontes diretamente no DOM, preservando a página aberta, o relógio, a notícia selecionada e os controles de reprodução. O rodapé informa o resultado e o horário da última sincronização. O botão de atualização manual usa a mesma rotina e impede consultas sobrepostas.
+
+## Geração otimizada atual
+
+A geração pública `be2dc56` preserva notícias da Abrapa, clima de Santos, relógio BRT, B3, PTAX com alertas, destinos do Comex Stat, QR code e transmissão CNN. O carregamento usa conexões antecipadas para fontes públicas, lazy loading no iframe da CNN e no QR code, dimensões explícitas para reduzir reflow e QR de 96×96. Em viewports estreitos, o shell mantém a altura da janela e oferece rolagem vertical sem recarregar o documento.
