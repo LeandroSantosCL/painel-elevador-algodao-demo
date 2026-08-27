@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const { replaceCNN } = require('./update-cnn.js');
+const html = fs.readFileSync(new URL('./index.html', import.meta.url), 'utf8');
+
+const oldCard = '<a class="cnn-live-card" href="https://www.cnnbrasil.com.br/ao-vivo/" target="_blank" rel="noopener noreferrer"><span>TRANSMISSÃO OFICIAL</span></a><p class="cnn-note">fallback</p>';
+const migrated = replaceCNN(oldCard, 'ABCDEFGHIJK');
+assert.match(migrated, /youtube\.com\/embed\/ABCDEFGHIJK/);
+assert.doesNotMatch(migrated, /cnn-live-card/);
+
+const iframe = replaceCNN(migrated, '12345678901');
+assert.match(iframe, /youtube\.com\/embed\/12345678901/);
+assert.equal((iframe.match(/cnn-frame/g) || []).length, 1);
+
+assert.match(html, /class="cnn-frame"/);
+assert.match(html, /title="CNN Brasil ao vivo"/);
+assert.match(html, /story-qr/);
+assert.match(html, /create-qr-code/);
+assert.match(html, /height:100dvh/);
+assert.match(html, /overflow:hidden/);
+assert.match(html, /\.vertical main/);
+assert.match(html, /96\*1000|96000/);
+assert.match(html, /120s/);
+
+console.log('OK: testes estáticos CNN, QR, compactação e regras de tempo passaram.');
