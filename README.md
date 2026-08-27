@@ -17,3 +17,7 @@ A presença do iframe é verificável no HTML publicado, mas a reprodução efet
 ## Testes estáticos
 
 Execute `node test-static.mjs` na raiz deste repositório para verificar a migração do cartão para iframe, a atualização idempotente, o QR code, os módulos essenciais e as regras de compactação dos modos horizontal e `?layout=vertical`.
+
+## Ciclos automáticos do painel
+
+A notícia em destaque alterna automaticamente a cada 96 segundos por um agendamento reiniciável; o resumo usa rolagem suave de 120 segundos e reinicia quando outra notícia é selecionada. O clima de Santos e o relógio digital BRT são atualizados no carregamento e o relógio avança a cada segundo. Caso o navegador bloqueie uma fonte pública, os módulos exibem estado de indisponibilidade em vez de deixar a tela vazia.
