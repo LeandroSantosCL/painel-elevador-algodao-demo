@@ -41,6 +41,9 @@ assert.ok((html.match(/animation:market-scroll 96s linear infinite/g) || []).len
 assert.match(html, /story\.story-swap/);
 assert.match(html, /story-scroll-content/);
 assert.match(html, /@keyframes storyContentScroll/);
+assert.match(html, /story-scroll-content\{[^}]*animation:storyContentScroll 120s/);
+assert.match(html, /story-scroll-content\.is-paused\{animation-play-state:paused\}/);
+assert.match(html, /classList\.toggle\('is-paused',!state\.playing\)/);
 assert.match(html, /root\.append\(content\)/);
 assert.match(html, /root\.classList\.add\('story-swap'\)/);
 assert.match(html, /rel="preconnect" href="https:\/\/abrapa\.com\.br"/);
