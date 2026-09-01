@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
-const { replaceCNN } = require('./update-cnn.js');
+const { replaceCNN, extractCandidateIds } = require('./update-cnn.js');
 const html = fs.readFileSync(new URL('./index.html', import.meta.url), 'utf8');
 
 const oldCard = '<a class="cnn-live-card" href="https://www.cnnbrasil.com.br/ao-vivo/" target="_blank" rel="noopener noreferrer"><span>TRANSMISSÃO OFICIAL</span></a><p class="cnn-note">fallback</p>';
@@ -47,7 +47,8 @@ assert.match(html, /classList\.toggle\('is-paused',!state\.playing\)/);
 assert.match(html, /root\.append\(content\)/);
 assert.match(html, /root\.classList\.add\('story-swap'\)/);
 assert.match(html, /rel="preconnect" href="https:\/\/abrapa\.com\.br"/);
-assert.match(html, /iframe loading="lazy"/);
+assert.match(html, /<iframe[^>]+title="CNN Brasil ao vivo"/);
+assert.deepEqual(extractCandidateIds('<div>video-title-Qpkyb</div><a href="https://www.youtube.com/watch?v=qxSpVLyadB4">live</a>'), ['qxSpVLyadB4']);
 assert.match(html, /img loading="lazy" decoding="async" width="48" height="48"/);
 assert.match(html, /size=96x96/);
 assert.match(html, /NEWS_ROTATION_MS=96000/);
