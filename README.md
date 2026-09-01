@@ -1,4 +1,4 @@
-# Painel de Elevador — demonstração estática
+# PAINEL ALGODÃO
 
 Este repositório contém uma única página estática, sem backend ou credenciais, pronta para publicação no GitHub Pages.
 
